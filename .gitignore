@@ -1,0 +1,18 @@
+#mac specific files
+.DS_Store
+
+#node_modules
+node_modules
+
+#temprarory and log files
+.tmp
+npm-debug.log
+
+#IDE speicific
+.idea
+
+#project specific
+lib/model/
+lib/populate/
+dist
+config.js
