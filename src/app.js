@@ -2,7 +2,29 @@ import express from "express";
 import fs from "fs";
 import moment from "moment-timezone";
 import _ from "lodash";
-require("./httpsTest");
+// require("./httpsTest");
+import sendgrid from "sendgrid";
+
+const helper = sendgrid.mail;
+const fromEmail = new helper.Email('test@example.com');
+const subject = "Sending email through sendgrid";
+const toEmail = new helper.Email("harspareek@gmail.com");
+const content = new helper.Content("text/html", "<h2>Hello from sendgrid</h2>");
+const mailer = new helper.Mail(fromEmail, subject, toEmail, content);
+
+const sgapi = sendgrid("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");
+
+const request = sgapi.emptyRequest({
+  method: 'POST',
+  path: '/v3/mail/send',
+  body: mailer.toJSON()
+});
+
+sgapi.API(request).then((responce) => {
+  console.log(`the responce is: ${JSON.stringify(responce)}`);
+}, (err) => {
+  console.log(`the error is: ${err}`);
+});
 
 const app = express();
 
