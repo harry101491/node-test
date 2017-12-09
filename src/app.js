@@ -8,6 +8,9 @@ const app = express();
 
 const port = process.env.PORT || 3000;
 
+const arr = [1,2,3,4,5];
+console.log(arr.map(value => value * 2));
+
 app.get("/", (req, res) => {
   res.send("<h2> Welcome to Node </h2>");
 });
