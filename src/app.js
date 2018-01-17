@@ -1,7 +1,9 @@
 import express from "express";
 const app = express();
-
+const routes = require("./routes");
 const port = process.env.PORT || 3000;
+
+app.use("/api", routes);
 
 app.get("/", (req, res) => {
   res.send("<h2> Welcome to Node </h2>");
